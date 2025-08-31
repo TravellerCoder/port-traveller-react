@@ -1,0 +1,108 @@
+.header {
+    position: fixed;    
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    background-color: var(--bg-color);
+    padding: 2rem 9%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-color);
+    cursor: default;
+}
+
+.languages {
+    display: flex;
+    gap: .5rem;
+}
+
+.lang-button {
+    background-color: transparent;
+    font-size: 1.25rem;
+    border: 0;
+    cursor: pointer;
+}
+
+.language-flag {
+    width: 3.5rem;
+    height: 2.8rem;
+    border-radius: 2%;
+    margin-right: .5rem;
+}
+
+#menu-icon {
+    font-size: 2.5rem;
+    color: var(--text-color);
+    display: none;
+    cursor: pointer;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 6.5rem;
+    height: 3.5rem;
+    margin-left: 4rem;
+}
+
+.switch input { 
+    opacity: 0;
+    width: 0; 
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color:var(--second-bg-color);
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 15%;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 2.5rem;
+    width: 2.5rem;
+    left: 4px;
+    bottom: 4px;
+    background-color:var(--main-color);
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 15%;
+}
+
+input:checked + .slider {
+    background-color: var(--second-bg-color);
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(3rem);
+    -ms-transform: translateX(3rem);    
+    transform: translateX(3rem); 
+}
+
+.navbar a {
+    color: var(--text-color);
+    font-size: 1.6rem;
+    font-weight: 500;
+    margin-left: 4rem;
+    transition: 0.4s;
+}
+
+.navbar a:hover, 
+.navbar a.active {
+    color: var(--main-color);
+}
