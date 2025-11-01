@@ -1,18 +1,29 @@
 import './Header.css'
 import { useTheme } from '../../hooks/UserTheme.jsx'
+import { useLanguage } from '../../hooks/UserLanguage.jsx'
 import spainFlag from "/images/spain-flag-icon.png"
 import usaFlag from "/images/American-flag-icon.png"
 
 
 const Header = () => {
   const { isDarkMode, toggleTheme } = useTheme(); 
+  const { currentLanguage, changeLanguage } = useLanguage();
+
+  const handleLanguageChange = (lang) => {
+    changeLanguage(lang);
+  }
+
   return (
     <header className="header">
     <a href="#" className="logo">Portfolio</a>
 
     <div className="languages">
-        <button className="lang-button" data-language="spanish"><img src={spainFlag} alt="es" className="language-flag" /></button>
-        <button className="lang-button" data-language="english"><img src={usaFlag} alt="en" className="language-flag" /></button>
+        <button className={`lang-button ${currentLanguage === 'spanish' ? 'active' : ''}`} onClick={() => handleLanguageChange('spanish')}>
+          <img src={spainFlag} alt="es" className="language-flag" />
+        </button>
+        <button className={`lang-button ${currentLanguage === 'english' ? 'active' : ''}`} onClick={() => handleLanguageChange('english')}>
+          <img src={usaFlag} alt="en" className="language-flag" />
+        </button>
     </div>
 
     <i className='bx bx-menu' id="menu-icon"></i>

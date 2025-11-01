@@ -9,11 +9,28 @@ const Contact = () => {
 
         <div className="input-box">
             <div className="input-file">
-                <input type="text" placeholder="Nombre Completo" id="Nombre" name="nombre"  autoComplete="off" data-section="contact-me" data-value="input-name"/>
+                <input 
+                type="text" 
+                placeholder="Nombre Completo" 
+                id="Nombre" 
+                name="nombre"  
+                autoComplete="off" 
+                data-section="contact-me" 
+                data-value="input-name"
+                />
                 <div className="error" id="errorNombre"></div>
             </div>
+                
             <div className="input-file">
-                <input type="email" placeholder="Email" id="Email" name="email" autoComplete="off"/>
+                <input 
+                type="email" 
+                placeholder="Email" 
+                id="Email" 
+                name="email" 
+                autoComplete="off"
+                data-section="contact-me"
+                data-value="input-email"
+                />
                 <div className ="error" id="errorEmail"></div>
             </div>
                 
@@ -21,18 +38,48 @@ const Contact = () => {
 
         <div className="input-box">
             <div className="input-file">
-                <input type="text" placeholder="Numero de telefono" id="Telefono" name="telefono" autoComplete="off"/>
+                <input type="text" 
+                placeholder="Numero de telefono" 
+                id="Telefono" 
+                name="telefono" 
+                autoComplete="off"
+                data-section="contact-me"
+                data-value="input-phone"
+                />
                 <div className="error" id="errorTelefono"></div>
             </div>
             <div className="input-file">
-                <input type="text" placeholder="Asunto" id="Asunto" name="asunto"  autoComplete="off"/>
+                <input type="text" 
+                placeholder="Asunto" 
+                id="Asunto" 
+                name="asunto"  
+                autoComplete="off"
+                data-section="contact-me"
+                data-value="input-subject"
+                />
                 <div className="error" id="errorAsunto"></div>
             </div>
         </div>
 
-        <textarea cols="30" rows="10" placeholder="Tu Mensaje" id="Mensaje" name="mensaje"></textarea>
+        <textarea 
+        cols="30"  
+        rows="10" 
+        placeholder="Tu Mensaje" 
+        id="Mensaje" 
+        name="mensaje"
+        data-section="contact-me"
+        data-value="input-message"
+        >
 
-        <input type="submit" value="Contactarme" className="submit-button"/>
+        </textarea>
+
+        <input 
+        type="submit" 
+        value="Contactarme"
+        className="submit-button"
+        data-section="contact-me"
+        data-value="submit-button"
+        />
 
     </form>
       

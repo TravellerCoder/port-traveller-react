@@ -30,6 +30,10 @@
     cursor: pointer;
 }
 
+.lang-button.active {
+    font-size: 1.75rem ;
+}
+
 .language-flag {
     width: 3.5rem;
     height: 2.8rem;
