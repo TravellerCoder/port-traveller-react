@@ -4,6 +4,7 @@ import Header from './assets/components/header/Header.jsx'
 import Hero from './assets/components/hero/Hero.jsx'
 import About from './assets/components/about/About.jsx'
 import Projects from './assets/components/projects/Projects.jsx'
+import Contact from './assets/components/contact/Contact.jsx'
 import './index.css'
   
 
@@ -13,5 +14,6 @@ createRoot(document.getElementById('root')).render(
     <Hero/>
     <About/>
     <Projects/>
+    <Contact/>
   </StrictMode>,
 )
