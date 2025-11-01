@@ -10,7 +10,7 @@
     scroll-behavior: smooth;
     font-family: 'Space Mono', monospace;
 }
-/*
+
 [data-theme = "light"] {
     --bg-color: #f7f7f7;
     --second-bg-color: #cfcdcd;
@@ -18,7 +18,7 @@
     --main-color: #2c58ce; 
     --error-color: #cc0303;
 }
-  */
+
 
 [data-theme = "dark"] {
     --bg-color: #1f242d;
