@@ -1,6 +1,6 @@
 import './Header.css'
-import spainFlag from "./images/spain-flag-icon.png"
-import usaFlag from "./images/American-flag-icon.png"
+import spainFlag from "/images/spain-flag-icon.png"
+import usaFlag from "/images/American-flag-icon.png"
 
 
 const Header = () => {
