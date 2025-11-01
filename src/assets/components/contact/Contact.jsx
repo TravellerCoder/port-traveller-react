@@ -5,7 +5,7 @@ const Contact = () => {
     <div className="contact" id="contact-me">
       <h2 className="contact-title" data-section="contact-me" data-value="contact-me-title">Estemos en contacto!</h2>
 
-        <form id="form" action="/contact" method="POST" novalidate>
+        <form id="form" action="/contact" method="POST" noValidate>
 
         <div className="input-box">
             <div className="input-file">

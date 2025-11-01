@@ -1,9 +1,11 @@
 import './Header.css'
+import { useTheme } from '../../hooks/UserTheme.jsx'
 import spainFlag from "/images/spain-flag-icon.png"
 import usaFlag from "/images/American-flag-icon.png"
 
 
 const Header = () => {
+  const { isDarkMode, toggleTheme } = useTheme(); 
   return (
     <header className="header">
     <a href="#" className="logo">Portfolio</a>
@@ -21,7 +23,7 @@ const Header = () => {
         <a href="#projects" data-section="header" data-value="projects">Proyectos</a>
         <a href="#contact-me" data-section="header" data-value="contact-me">Contacto</a>
         <label className="switch">
-            <input type="checkbox" id="slider" checked />
+            <input type="checkbox" id="slider" checked={isDarkMode} onChange={toggleTheme} />
             <span className="slider"></span>
         </label>
     </nav>
