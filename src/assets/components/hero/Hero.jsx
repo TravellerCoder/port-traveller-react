@@ -1,17 +1,32 @@
 import './Hero.css'
 import { useLanguage } from '../../context/UseLanguageContext.jsx'
-import { useEffect, useState } from 'react';
+import TextType from '../../gsap/TypeText.jsx'
 
 const Hero = () => {
     const { currentLanguage } = useLanguage();
 
+    //Textos de TextType segun idioma
+    const typeTexts = {
+        spanish: ["Desarrollo web Front End", "Desarrollo web Full Stack"],
+        english: ["Front End Developer", "Full Stack Developer"]
+    };
 
   return (
     <div className='home'>
     <div className="home-content">
         <h3 data-section="home"  data-value="home-subtitle">Bienvenido</h3>
         <h1>Traveller Coder</h1>
-        <h3 data-section="home"  data-value="home-subtitle-description"> Desarrollador Web Frontend</h3>
+
+        <TextType 
+            text={typeTexts[currentLanguage]}
+            typingSpeed={75}
+            pauseDuration={1500}
+            showCursor={true}
+            cursorCharacter="|"
+        />
+
+        {/*<h3 data-section="home"  data-value="home-subtitle-description"> Desarrollador Web Frontend</h3>*/}
+        
         <p data-section="home" className="home-description-text1" data-value="home-description-text1">Desarrollo web freelance y para empresas. </p>
         <p data-section="home"  data-value="home-description-text2">Tus ideas estan a un click de ser realidad.</p>
 
