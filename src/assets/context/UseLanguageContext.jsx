@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react'
+import { createContext, useContext, useState, useEffect } from 'react'
 
-
+// Objeto con todas las traducciones
 const translations = {
   spanish: {
     header: {
@@ -39,13 +39,13 @@ const translations = {
       "project-link-button": "Ir al sitio"
     },
     "contact-me": {
-        "contact-me-title": "Estemos en contacto!",
-        "input-name": "Nombre Completo",
-        "input-email": "Email", 
-        "input-phone": "Numero de telefono",
-        "input-subject": "Asunto",
-        "input-message": "Tu Mensaje",
-        "submit-button": "Contactarme"
+      "contact-me-title": "Estemos en contacto!",
+      "input-name": "Nombre Completo",
+      "input-email": "Email",
+      "input-phone": "Numero de telefono",
+      "input-subject": "Asunto",
+      "input-message": "Tu Mensaje",
+      "submit-button": "Contactarme"
     }
   },
   english: {
@@ -85,20 +85,47 @@ const translations = {
       "project-link-button": "Go to site"
     },
     "contact-me": {
-        "contact-me-title": "Let's get in touch!",
-        "input-name": "Full Name",
-        "input-email": "Email",
-        "input-phone": "Phone Number", 
-        "input-subject": "Subject",
-        "input-message": "Your Message",
-        "submit-button": "Contact Me"
-}   
-
+      "contact-me-title": "Let's get in touch!",
+      "input-name": "Full Name",
+      "input-email": "Email",
+      "input-phone": "Phone Number",
+      "input-subject": "Subject",
+      "input-message": "Your Message",
+      "submit-button": "Contact Me"
     }
+  }
 }
 
-export const useLanguage = () => {
-  // Detectar idioma del navegador o usar español por defecto
+// Función para aplicar textos al DOM
+const applyLanguageTexts = (language) => {
+  const elements = document.querySelectorAll('[data-section][data-value]')
+  
+  elements.forEach(element => {
+    const section = element.getAttribute('data-section')
+    const key = element.getAttribute('data-value')
+    
+    const text = translations[language]?.[section]?.[key]
+    if (text) {
+      if (element.tagName === 'INPUT') {
+        if (element.type === 'submit') {
+          element.value = text
+        } else {
+          element.placeholder = text
+        }
+      } else if (element.tagName === 'TEXTAREA') {
+        element.placeholder = text
+      } else {
+        element.textContent = text
+      }
+    }
+  })
+}
+
+// Crear el Context
+const LanguageContext = createContext()
+
+// Provider Component
+export const LanguageProvider = ({ children }) => {
   const getSystemLanguage = () => {
     const browserLang = navigator.language || navigator.userLanguage
     return browserLang.startsWith('en') ? 'english' : 'spanish'
@@ -106,45 +133,37 @@ export const useLanguage = () => {
 
   const [currentLanguage, setCurrentLanguage] = useState(() => {
     const savedLanguage = localStorage.getItem('language')
-    if (savedLanguage) {
-      return savedLanguage
-    }
-    return getSystemLanguage()
+    return savedLanguage || getSystemLanguage()
   })
 
   const changeLanguage = (language) => {
     setCurrentLanguage(language)
   }
 
-  // Aplicar idioma cuando cambie
   useEffect(() => {
     localStorage.setItem('language', currentLanguage)
-    // Aquí aplicaremos los textos
-    applyLanguageTexts(currentLanguage)
+    setTimeout(() => {
+      applyLanguageTexts(currentLanguage)
+    }, 100)
   }, [currentLanguage])
 
-  return { 
-    currentLanguage, 
-    changeLanguage,
-    isSpanish: currentLanguage === 'spanish',
-    isEnglish: currentLanguage === 'english'
-  }
+  return (
+    <LanguageContext.Provider value={{ 
+      currentLanguage, 
+      changeLanguage,
+      isSpanish: currentLanguage === 'spanish',
+      isEnglish: currentLanguage === 'english'
+    }}>
+      {children}
+    </LanguageContext.Provider>
+  )
 }
 
-// Función para aplicar los textos
-const applyLanguageTexts = (language) => {
-  // Buscar todos los elementos con data-section y data-value
-  const elements = document.querySelectorAll('[data-section][data-value]')
-  
-  elements.forEach(element => {
-    const section = element.getAttribute('data-section')
-    const key = element.getAttribute('data-value')
-    
-    // Buscar el texto en el objeto de traducciones
-    const text = translations[language]?.[section]?.[key]
-    if (text) {
-      element.textContent = text
-    }
-  })
-
+// Hook personalizado
+export const useLanguage = () => {
+  const context = useContext(LanguageContext)
+  if (!context) {
+    throw new Error('useLanguage debe usarse dentro de LanguageProvider')
+  }
+  return context
 }

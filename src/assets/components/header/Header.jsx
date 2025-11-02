@@ -1,6 +1,6 @@
 import './Header.css'
 import { useTheme } from '../../hooks/UserTheme.jsx'
-import { useLanguage } from '../../hooks/UserLanguage.jsx'
+import { useLanguage } from '../../context/UseLanguageContext.jsx'
 import spainFlag from "/images/spain-flag-icon.png"
 import usaFlag from "/images/American-flag-icon.png"
 
