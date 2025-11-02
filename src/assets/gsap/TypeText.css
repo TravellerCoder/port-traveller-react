@@ -1,6 +1,9 @@
 .text-type {
   display: inline-block;
   white-space: pre-wrap;
+  font-size: 3.2rem;
+  font-weight: 700;
+  color: var(--main-color);
 }
 
 .text-type__cursor {

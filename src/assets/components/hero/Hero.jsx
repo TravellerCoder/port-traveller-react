@@ -1,6 +1,6 @@
-import './Hero.css'
-import { useLanguage } from '../../context/UseLanguageContext.jsx'
-import TextType from '../../gsap/TypeText.jsx'
+import { useLanguage } from '../../context/UseLanguageContext.jsx';
+import TextType from '../../gsap/TypeText.jsx';
+import './Hero.css';
 
 const Hero = () => {
     const { currentLanguage } = useLanguage();
@@ -55,6 +55,7 @@ const Hero = () => {
     <div className="home-img">
         <img src="/images/img-logo.jpg" alt="traveller coder"/>    
     </div>
+    
 </div>
   )
 }

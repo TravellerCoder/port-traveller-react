@@ -3,11 +3,14 @@
     justify-content: center;
     align-items: center;
     background: var(--second-bg-color);
+    height: 100dvh;
 }
 
 .conoceme-content {
     width: 100%;
     max-width: 1200px;
+    padding: 20px  ;
+    margin: 5rem;
 }
 
 .conoceme-content h2 {
