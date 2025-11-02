@@ -23,8 +23,8 @@ const translations = {
       "projects-title": "Mis proyectos"
     },
     "projects-unity": {
-      "project-01-title": "Exquis",
-      "project-01-description": "Modelo de landing page de restaurant, responsive.",
+      "project-01-title": "Juntadelly",
+      "project-01-description": "Calculadora para app de pedidos de picadas, hecha con JS, sumada a un sitio WordPress",
       "project-02-title": "Lunaticos de Viaje",
       "project-02-description": "Landing page de empresa de viajes personalizados. Form de contacto, recaptcha y responsive.",
       "project-03-title": "Freelads",
@@ -68,16 +68,16 @@ const translations = {
       "projects-title": "My Projects"
     },
     "projects-unity": {
-      "project-01-title": "Exquis",
-      "project-01-description": "Restaurant landing page model, responsive.",
+      "project-01-title": "Juntadelly",
+      "project-01-description": "Calculator for appetizer ordering app, built with JavaScript and integrated into WordPress",
       "project-02-title": "Lunaticos de Viaje",
       "project-02-description": "Landing page for personalized travel company. Contact form, recaptcha and responsive.",
       "project-03-title": "Freelads",
       "project-03-description": "Landing page for Freelads digital marketing company, with contact form, responsive.",
       "project-04-title": "ShoesShop",
       "project-04-description": "Sneaker E-commerce model, with shopping cart, responsive.",
-      "project-05-title": "Weather App",
-      "project-05-description": "Weather application, with OpenWeatherMap API, responsive.",
+      "project-05-title": "Exquis",
+      "project-05-description": "Restaurant landing page model, responsive.",
       "project-06-title": "GitHub",
       "project-06-description": "Remember you can see the code of all my projects by visiting my GitHub profile.",
       "project-link-button": "Go to site"

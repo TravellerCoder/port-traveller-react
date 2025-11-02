@@ -1,7 +1,14 @@
+.proyectos {
+    padding: 0 2rem;
+    margin-bottom: 10px;
+    height: 100dvh;
+}
+
 .proyectos-title {
     font-size: 4.5rem;
     font-weight: 700;
     margin-bottom: 4rem;
+    padding-top: 20px;
     text-align: center;
 }
 

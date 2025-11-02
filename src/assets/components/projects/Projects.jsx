@@ -7,11 +7,11 @@ const Projects = () => {
 
       <div className="proyectos-container" id="projects-unity">
         <div className="proyectos-box">
-          <img src="/images/exquis-3.png" alt="" className="proyecto-img"/>
+          <img src="/images/Juntadelly.png" alt="" className="proyecto-img"/>
             <div className="proyecto-layer">
-                <h4 data-section="projects-unity" data-value="project-01-title">Exquis</h4>
-                <p data-section="projects-unity" data-value="project-01-description">Modelo de landing page de restaurant, responsive.</p>
-                <a href="https://exquis-menu.onrender.com/" target="_blank" className="proyecto-button" data-section="projects-unity" data-value="project-link-button">Ir al sitio</a>
+                <h4 data-section="projects-unity" data-value="project-01-title">Juntadelly</h4>
+                <p data-section="projects-unity" data-value="project-01-description">Calculadora para app de pedidos de picadas, hecha con JS, sumada a un sitio WordPress</p>
+                <a href="https://juntadely.com.ar/" target="_blank" className="proyecto-button" data-section="projects-unity" data-value="project-link-button">Ir al sitio</a>
             </div>
         </div>
 
@@ -43,11 +43,11 @@ const Projects = () => {
         </div>
 
         <div className="proyectos-box">
-            <img src="/images/Weather 2.png" alt="" className="proyecto-img"/>
+          <img src="/images/exquis-3.png" alt="" className="proyecto-img"/>
             <div className="proyecto-layer">
-                <h4 data-section="projects-unity" data-value="project-05-title">Weather App</h4>
-                <p data-section="projects-unity" data-value="project-05-description">Aplicación de clima, con API de OpenWeatherMap, responsive.</p>
-                <a href="https://weathertravellerapp.netlify.app/" target="_blank" className="proyecto-button" data-section="projects-unity" data-value="project-link-button">Ir al sitio</a>
+                <h4 data-section="projects-unity" data-value="project-05-title">Exquis</h4>
+                <p data-section="projects-unity" data-value="project-05-description">Modelo de landing page de restaurant, responsive.</p>
+                <a href="https://exquis-menu.onrender.com/" target="_blank" className="proyecto-button" data-section="projects-unity" data-value="project-link-button">Ir al sitio</a>
             </div>
         </div>
 
@@ -65,5 +65,7 @@ const Projects = () => {
 
   )
 }
+        
+
 
 export default Projects

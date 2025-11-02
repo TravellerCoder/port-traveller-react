@@ -12,7 +12,7 @@ const Hero = () => {
     };
 
   return (
-    <div className='home'>
+    <div className='home' id='home'>
     <div className="home-content">
         <h3 data-section="home"  data-value="home-subtitle">Bienvenido</h3>
         <h1>Traveller Coder</h1>
