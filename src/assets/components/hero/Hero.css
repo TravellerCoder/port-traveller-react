@@ -72,23 +72,76 @@
     border-radius: 50%;
 }
 
-@media (max-width: 850px){
 
-.home {
-        flex-direction: column;
-    }
+/* ===== RESPONSIVE HERO ===== */
 
-    .home img {
-        display: none;
-    }
 
-    .home-content {
-        width: 100vw;
-        text-align: left;
-        padding: 0 1.5rem;    
-    }
+@media (max-width: 768px) {
+  .home {
+    flex-direction: column;
+    gap: 5rem;
+    padding: 10rem 4% 2rem;
+    text-align: center;
+  }
+  
+  .home-content {
+    order: 2;
+  }
+  
+  .home-img {
+    order: 1;
+  }
+  
+  .home-content h1 {
+    font-size: 4.5rem;
+  }
+  
+  .home-content p {
+    font-size: 1.6rem;
+    margin: 1.5rem 0;
+  }
+  
+  .social-media {
+    justify-content: center;
+  }
+  
+  .home-img img {
+    width: 250px;
+    height: 250px;
+  }
+}
 
-    .home-content h1{
-        font-size: 4.5rem;
-    }
+@media (max-width: 480px) {
+  .home {
+    padding: 8rem 3% 2rem;
+  }
+  
+  .home-content h1 {
+    font-size: 3.5rem;
+  }
+  
+  .home-content h3 {
+    font-size: 2.5rem;
+  }
+  
+  .home-content p {
+    font-size: 1.4rem;
+  }
+  
+  .social-media a {
+    width: 3.5rem;
+    height: 3.5rem;
+    font-size: 1.8rem;
+    margin: 2rem 1rem 2rem 0;
+  }
+  
+  .cv-button {
+    padding: 0.8rem 2rem;
+    font-size: 1.6rem;
+  }
+  
+  .home-img img {
+    width: 200px;
+    height: 200px;
+  }
 }
