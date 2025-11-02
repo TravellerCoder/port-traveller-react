@@ -32,3 +32,29 @@
     font-weight: 500;
     line-height: 3.5rem;
 }
+
+
+@media (max-width: 768px) {
+
+    .conoceme{
+        height: auto;
+        padding: 4rem 0;
+    }
+
+    .conoceme-content {
+        margin: 2rem;
+    }
+
+    .conoceme-content h2 {
+        font-size: 3.2rem;
+    }
+
+    .conoceme-content h3 {
+        font-size: 2.8rem;
+    }
+
+    .conoceme-content p {
+        font-size: 1.6rem;
+        line-height: 2.8rem;
+    }
+}
