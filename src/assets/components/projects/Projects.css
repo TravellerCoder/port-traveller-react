@@ -91,3 +91,53 @@
 .proyecto-button:hover {
     box-shadow: none;
 }
+
+
+/* ===== RESPONSIVE PROJECTS ===== */
+
+@media (max-width: 768px) {
+  .proyectos {
+    padding: 5rem 4%;
+  }
+  
+  .proyectos-title {
+    font-size: 4rem;
+    margin-bottom: 3rem;
+  }
+  
+  .proyectos-container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .proyectos-box {
+    height: auto;
+  }
+  
+  .proyecto-img {
+    height: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .proyectos {
+    padding: 4rem 3%;
+  }
+  
+  .proyectos-title {
+    font-size: 3rem;
+  }
+  
+  .proyecto-layer h4 {
+    font-size: 2rem;
+  }
+  
+  .proyecto-layer p {
+    font-size: 1.4rem;
+  }
+  
+  .proyecto-button {
+    padding: 0.8rem 2rem;
+    font-size: 1.4rem;
+  }
+}
