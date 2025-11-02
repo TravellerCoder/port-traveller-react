@@ -110,3 +110,66 @@ input:checked + .slider:before {
 .navbar a.active {
     color: var(--main-color);
 }
+
+
+/* ===== RESPONSIVE HEADER ===== */
+
+
+@media (max-width: 768px) {
+  .header {
+    padding: 1.5rem 4%;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  .logo {
+    font-size: 2rem;
+  }
+  
+  .navbar {
+    display: none; /* Ocultar navbar en móvil */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: var(--bg-color);
+    flex-direction: column;
+    padding: 2rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  }
+  
+  .navbar.active {
+    display: flex; /* Mostrar cuando esté activo */
+  }
+  
+  .navbar a {
+    margin: 1rem 0;
+    font-size: 1.8rem;
+  }
+  
+  #menu-icon {
+    display: block !important;
+    font-size: 3rem;
+    color: var(--text-color);
+    cursor: pointer;
+  }
+  
+  .languages {
+    order: 2;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding: 1rem 3%;
+  }
+  
+  .logo {
+    font-size: 1.8rem;
+  }
+  
+  .language-flag {
+    width: 20px;
+    height: 15px;
+  }
+}
