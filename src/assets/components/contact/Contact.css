@@ -1,6 +1,7 @@
 .contact {
     background: var(--second-bg-color);
-    padding: 3rem 2%
+    padding: 3rem 2%;
+    scroll-margin-top: 5rem;
 }
 
 .contact h2 {

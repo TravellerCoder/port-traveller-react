@@ -8,7 +8,6 @@
 
 .conoceme-content {
     width: 100%;
-    max-width: 1200px;
     padding: 20px  ;
     margin: 5rem;
 }
@@ -28,9 +27,10 @@
 }
 
 .conoceme-content p {
-    font-size: 1.8rem;
+    font-size: 2.5rem;
     font-weight: 500;
     line-height: 3.5rem;
+
 }
 
 /* ===== RESPONSIVE ABOUT ===== */
