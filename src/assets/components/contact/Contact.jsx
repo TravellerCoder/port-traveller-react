@@ -1,6 +1,7 @@
 import './Contact.css'
 import { useState } from 'react';
 import { useLanguage } from '../../context/UseLanguageContext';
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
 
@@ -21,6 +22,12 @@ const Contact = () => {
     const [ errors, SetErrors] = useState({});
     const [ isSubmitting, setIsSubmitting] = useState(false);
     const [ submitStatus, setSubmitStatus] = useState("");
+
+    const emailjsConfig = {
+       serviceId: 'TU_SERVICE_ID',      // Lo obtienes de EmailJS
+       templateId: 'TU_TEMPLATE_ID',    // Lo obtienes de EmailJS  
+       publicKey: 'TU_PUBLIC_KEY'       // Lo obtienes de EmailJS
+    } 
 
     //Mensajes de error en ambos idiomas 
 
@@ -140,7 +147,7 @@ const Contact = () => {
 
     //Manejar el envio del formulario
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
         if (!validateForm()) {
@@ -149,6 +156,32 @@ const Contact = () => {
 
         setIsSubmitting(true);
         setSubmitStatus("");
+
+        try { 
+            const result = await emailjs.sendForm(
+                emailjsConfig.serviceId,
+                emailjsConfig.templateId,
+                e.target,
+                emailjsConfig.publicKey
+            );
+            console.log('EmailJS result:', result);
+            setSubmitStatus("success");
+            
+            //limpieza del formulario 
+            SetFormData({
+                nombre: '',
+                email: '',
+                telefono: '',
+                asunto: '',
+                mensaje: ''
+            });
+            SetErrors({});
+        } catch (error) {
+            console.error('EmailJS error:', error);
+            setSubmitStatus("error");
+        } finally {
+            setIsSubmitting(false);
+        }
     }    
 
     return (
@@ -163,7 +196,7 @@ const Contact = () => {
                 type="text" 
                 placeholder="Nombre Completo" 
                 id="Nombre" 
-                name="nombre"  
+                name="user_name"  
                 value={formData.nombre}
                 onChange={handleInputChange}
                 autoComplete="off" 
@@ -179,7 +212,7 @@ const Contact = () => {
                 type="email" 
                 placeholder="Email" 
                 id="Email" 
-                name="email" 
+                name="user_email" 
                 value={formData.email}
                 onChange={handleInputChange}
                 autoComplete="off"
@@ -197,7 +230,7 @@ const Contact = () => {
                 <input type="text" 
                 placeholder="Numero de telefono" 
                 id="Telefono" 
-                name="telefono" 
+                name="user_phone" 
                 value={formData.telefono}
                 onChange={handleInputChange}
                 autoComplete="off"
@@ -211,7 +244,7 @@ const Contact = () => {
                 <input type="text" 
                 placeholder="Asunto" 
                 id="Asunto" 
-                name="asunto"  
+                name="user_subject"  
                 value={formData.asunto}
                 onChange={handleInputChange}
                 autoComplete="off"
@@ -228,7 +261,7 @@ const Contact = () => {
         rows="10" 
         placeholder="Tu Mensaje" 
         id="Mensaje" 
-        name="mensaje"
+        name="user_message"
         value={formData.mensaje}
         onChange={handleInputChange}
         data-section="contact-me"
