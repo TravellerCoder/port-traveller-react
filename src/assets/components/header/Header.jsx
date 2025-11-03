@@ -1,6 +1,7 @@
 import './Header.css'
 import { useTheme } from '../../hooks/UserTheme.jsx'
 import { useLanguage } from '../../context/UseLanguageContext.jsx'
+import { useState } from 'react';
 import spainFlag from "/images/spain-flag-icon.png"
 import usaFlag from "/images/American-flag-icon.png"
 
@@ -8,14 +9,25 @@ import usaFlag from "/images/American-flag-icon.png"
 const Header = () => {
   const { isDarkMode, toggleTheme } = useTheme(); 
   const { currentLanguage, changeLanguage } = useLanguage();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleLanguageChange = (lang) => {
     changeLanguage(lang);
   }
 
+  // Función para toggle del menú hamburguesa
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  }
+
+  // Función para cerrar el menú cuando se hace clic en un enlace
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  }
+
   return (
     <header className="header">
-    <a href="#" className="logo">Portfolio</a>
+    <a href="/" className="logo">Portfolio</a>
 
     <div className="languages">
         <button className={`lang-button ${currentLanguage === 'spanish' ? 'active' : ''}`} onClick={() => handleLanguageChange('spanish')}>
@@ -26,9 +38,9 @@ const Header = () => {
         </button>
     </div>
 
-    <i className='bx bx-menu' id="menu-icon"></i>
+    <i className='bx bx-menu' id="menu-icon" onClick={toggleMenu}></i>
 
-    <nav className="navbar">
+    <nav className={`navbar ${isMenuOpen ? 'active' : ''}`} onClick={closeMenu}>
         <a href="#home" data-section="header" data-value="home">Inicio</a>
         <a href="#about-me" data-section="header" data-value="about-me">Conoceme</a>
         <a href="#projects" data-section="header" data-value="projects">Proyectos</a>

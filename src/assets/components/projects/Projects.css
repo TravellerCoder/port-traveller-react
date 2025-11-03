@@ -1,7 +1,7 @@
 .proyectos {
     padding: 0 2rem;
     margin-bottom: 10px;
-    height: 100dvh;
+    min-height: 100dvh;
     max-height: 100dvh;
     scroll-margin-top: 7rem; 
 }
@@ -19,6 +19,9 @@
     grid-template-columns: repeat(3, 1fr);
     align-items: center;
     gap: 3.5rem;
+    flex: 1;
+    max-width: 1400px;
+    margin: 0 auto;
     height: calc(100dvh - 15rem);
 }
 
@@ -101,7 +104,9 @@
 @media (max-width: 768px) {
   .proyectos {
     padding: 5rem 4%;
-    height: auto;
+    min-height: auto;
+    max-height: none;
+    justify-content: flex-start;
   }
   
   .proyectos-title {
@@ -112,6 +117,8 @@
   .proyectos-container {
     grid-template-columns: 1fr;
     gap: 2rem;
+    height: auto;
+    max-height: none;
   }
   
   .proyectos-box {
