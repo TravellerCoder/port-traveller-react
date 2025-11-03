@@ -15,8 +15,8 @@ const Contact = () => {
         user_name: '',
         user_email: '',
         user_phone: '',
-        user_subject: '',
-        user_message: ''
+        subject: '',
+        message: ''
     });
 
     //Estados para los errores de validacion
@@ -68,7 +68,7 @@ const Contact = () => {
     //Funcion para validar campos individuales 
 
     const validateField = (name, value) => {
-        let error;
+        let error = "";
         const messages = errorMessages[currentLanguage];
 
         switch(name) {
@@ -124,6 +124,8 @@ const Contact = () => {
     const handleInputChange = (e) => {
         const { name, value } = e.target;
 
+         console.log('🔥 Input:', name, '=', value);
+
         setFormData(prev => ({
         ...prev,
         [name]: value
@@ -131,6 +133,7 @@ const Contact = () => {
 
         // Validar el campo
         const error = validateField(name, value);
+        console.log('🔥 Validation error for', name, ':', error);
     setErrors(prev => ({
         ...prev,
         [name]: error
@@ -149,7 +152,7 @@ const Contact = () => {
             }
         });
 
-        SetErrors(newErrors);
+        setErrors(newErrors);
         return Object.keys(newErrors).length === 0;
     }
 
@@ -176,14 +179,14 @@ const Contact = () => {
             setSubmitStatus("success");
             
             //limpieza del formulario 
-            SetFormData({
+            setFormData({
                 nombre: '',
                 email: '',
                 telefono: '',
                 asunto: '',
                 mensaje: ''
             });
-            SetErrors({});
+            setErrors({});
         } catch (error) {
             console.error('EmailJS error:', error);
             setSubmitStatus("error");
@@ -210,9 +213,9 @@ const Contact = () => {
                 autoComplete="off" 
                 data-section="contact-me" 
                 data-value="input-name"
-                className={errors.nombre ? 'input-error' : ''}
+                className={errors.user_name ? 'input-error' : ''}
                 />
-                {errors.nombre && <div className="error" id="errorNombre">{errors.nombre}</div>}
+                {errors.user_name && <div className="error" id="errorNombre">{errors.user_name}</div>}
             </div>
                 
             <div className="input-file">
@@ -226,9 +229,9 @@ const Contact = () => {
                 autoComplete="off"
                 data-section="contact-me"
                 data-value="input-email"
-                className={errors.email ? 'input-error' : ''}
+                className={errors.user_email ? 'input-error' : ''}
                 />
-                {errors.email && <div className="error" id="errorEmail">{errors.email}</div>}
+                {errors.user_email && <div className="error" id="errorEmail">{errors.user_email}</div>}
             </div>
                 
         </div>
@@ -244,23 +247,23 @@ const Contact = () => {
                 autoComplete="off"
                 data-section="contact-me"
                 data-value="input-phone"
-                className={errors.telefono ? 'input-error' : ''}
+                className={errors.user_phone ? 'input-error' : ''}
                 />
-                {errors.telefono && <div className="error" id="errorTelefono">{errors.telefono}</div>}
+                {errors.user_phone && <div className="error" id="errorTelefono">{errors.user_phone}</div>}
             </div>
             <div className="input-file">
                 <input type="text" 
                 placeholder="Asunto" 
                 id="Asunto" 
-                name="user_subject"  
-                value={formData.asunto}
+                name="subject"  
+                value={formData.subject}
                 onChange={handleInputChange}
                 autoComplete="off"
                 data-section="contact-me"
                 data-value="input-subject"
-                className={errors.asunto ? 'input-error' : ''}
+                className={errors.subject ? 'input-error' : ''}
                 />
-                {errors.asunto && <div className="error" id="errorAsunto">{errors.asunto}</div>}
+                {errors.subject && <div className="error" id="errorAsunto">{errors.subject}</div>}
             </div>
         </div>
 
@@ -269,14 +272,14 @@ const Contact = () => {
         rows="10" 
         placeholder="Tu Mensaje" 
         id="Mensaje" 
-        name="user_message"
+        name="message"
         value={formData.mensaje}
         onChange={handleInputChange}
         data-section="contact-me"
         data-value="input-message"
-        className={errors.mensaje ? 'input-error' : ''}
+        className={errors.message ? 'input-error' : ''}
         >
-         {errors.mensaje && <div className="error" id="errorMensaje">{errors.mensaje}</div>}
+         {errors.message && <div className="error" id="errorMensaje">{errors.message}</div>}
         </textarea>
 
         <button
