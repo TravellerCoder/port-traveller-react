@@ -98,6 +98,7 @@
 @media (max-width: 768px) {
   .proyectos {
     padding: 5rem 4%;
+    height: auto;
   }
   
   .proyectos-title {
@@ -122,6 +123,7 @@
 @media (max-width: 480px) {
   .proyectos {
     padding: 4rem 3%;
+    height: auto;
   }
   
   .proyectos-title {
