@@ -1,5 +1,5 @@
 import './Contact.css'
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { useLanguage } from '../../context/UseLanguageContext';
 import emailjs from '@emailjs/browser';
 
@@ -7,19 +7,21 @@ const Contact = () => {
 
     const { currentLanguage } = useLanguage();
 
+    const formRef = useRef(); // Referencia al formulario
+
     //Estados para valores del formulario
 
-    const [ formData, SetFormData ] = useState({
-        nombre: '',
-        email: '',
-        telefono: '',
-        asunto: '',
-        mensaje: ''
+    const [ formData, setFormData ] = useState({
+        user_name: '',
+        user_email: '',
+        user_phone: '',
+        user_subject: '',
+        user_message: ''
     });
 
     //Estados para los errores de validacion
 
-    const [ errors, SetErrors] = useState({});
+    const [ errors, setErrors] = useState({});
     const [ isSubmitting, setIsSubmitting] = useState(false);
     const [ submitStatus, setSubmitStatus] = useState("");
 
@@ -122,11 +124,17 @@ const Contact = () => {
     const handleInputChange = (e) => {
         const { name, value } = e.target;
 
-        SetFormData({ ...formData, [name]: value });
+        setFormData(prev => ({
+        ...prev,
+        [name]: value
+    }));
 
         // Validar el campo
         const error = validateField(name, value);
-        SetErrors({ ...errors, [name]: error });
+    setErrors(prev => ({
+        ...prev,
+        [name]: error
+    }));
     }
 
     //Funcion para validar todo el forulario
@@ -188,7 +196,7 @@ const Contact = () => {
     <div className="contact" id="contact-me">
       <h2 className="contact-title" data-section="contact-me" data-value="contact-me-title">Estemos en contacto!</h2>
 
-        <form id="form" action="/contact" method="POST" noValidate>
+        <form ref={formRef} onSubmit={handleSubmit} noValidate>
 
         <div className="input-box">
             <div className="input-file">
