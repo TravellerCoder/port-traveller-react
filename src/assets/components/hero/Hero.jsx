@@ -1,5 +1,5 @@
 import { useLanguage } from '../../context/UseLanguageContext.jsx';
-import TextType from '../../gsap/TypeText.jsx';
+import TextType from '../../effects/typeText/TypeText.jsx';
 import './Hero.css';
 
 const Hero = () => {

@@ -2,6 +2,7 @@ import './Header.css'
 import { useTheme } from '../../hooks/UserTheme.jsx'
 import { useLanguage } from '../../context/UseLanguageContext.jsx'
 import { useState } from 'react';
+import GradientText from '../../effects/gradientText/GradientText.jsx';
 import spainFlag from "/images/spain-flag-icon.png"
 import usaFlag from "/images/American-flag-icon.png"
 
@@ -27,7 +28,17 @@ const Header = () => {
 
   return (
     <header className="header">
-    <a href="/" className="logo">Portfolio</a>
+      <a href="/" className="logo">
+      <GradientText
+          colors={["#40ffaa", "#4079ff", "#40ffaa", "#4079ff", "#40ffaa"]}
+          animationSpeed={3}
+          showBorder={false}
+          className="custom-class"
+        >
+          Portfolio
+      </GradientText>
+      </a>
+    
 
     <div className="languages">
         <button className={`lang-button ${currentLanguage === 'spanish' ? 'active' : ''}`} onClick={() => handleLanguageChange('spanish')}>
