@@ -88,9 +88,12 @@
   height: auto;
 }
 
-.error-input {
-  border: 2px solid var(--error-color) !important;
-  box-shadow: 0 0 5px rgba(204, 3, 3, 0.3);
+.input-error {
+  box-shadow: 0 0 10px var(--error-color);
+}
+
+.input-error:focus {
+  box-shadow: 0 0 3rem var(--error-color) !important;
 }
 
 .submit-button:disabled {
