@@ -78,8 +78,8 @@
   color: var(--error-color);
   font-size: 1.2rem;
   margin-top: 0.5rem;
-  opacity: 0;
-  height: 0;
+  opacity: 1;
+  height: auto;
   transition: all 0.3s ease;
 }
 

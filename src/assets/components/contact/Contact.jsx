@@ -72,7 +72,7 @@ const Contact = () => {
         const messages = errorMessages[currentLanguage];
 
         switch(name) {
-            case 'nombre':
+            case 'user_name':
                 if (!value.trim()) {
                     error = messages.required;
                 } else if (value.trim().length < 2) {
@@ -80,7 +80,7 @@ const Contact = () => {
                 }  
                 break;
 
-            case 'email':
+            case 'user_email':
                 if (!value.trim()) {
                     error = messages.required;
                 } else if (!validateEmail(value.trim())) {
@@ -88,7 +88,7 @@ const Contact = () => {
                 }
                 break;
 
-            case 'telefono':
+            case 'user_phone':
                 if (!value.trim()) {
                     error = messages.required;
                 } else if (!validatePhone(value.trim())) {
@@ -96,7 +96,7 @@ const Contact = () => {
                 }
                 break;
 
-            case 'asunto':
+            case 'subject':
                 if (!value.trim()) {
                     error = messages.required;
                 } else if (value.trim().length < 2) {
@@ -104,7 +104,7 @@ const Contact = () => {
                 }
                 break;
 
-            case 'mensaje':
+            case 'message':
                 if (!value.trim()) {
                     error = messages.required;
                 } else if (value.trim().length < 10) {
@@ -152,6 +152,7 @@ const Contact = () => {
             }
         });
 
+        console.log('🔥 All errors found:', newErrors);
         setErrors(newErrors);
         return Object.keys(newErrors).length === 0;
     }
@@ -161,7 +162,12 @@ const Contact = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
+        console.log('🔥 Form Data:', formData);
+    console.log('🔥 Validating...');
+
         if (!validateForm()) {
+             console.log('❌ Validation FAILED');
+        console.log('🔥 Errors:', errors);
             return;
         }
 
@@ -180,11 +186,11 @@ const Contact = () => {
             
             //limpieza del formulario 
             setFormData({
-                nombre: '',
-                email: '',
-                telefono: '',
-                asunto: '',
-                mensaje: ''
+                user_name: '',
+                user_email: '',
+                user_phone: '',
+                subject: '',
+                message: ''
             });
             setErrors({});
         } catch (error) {
