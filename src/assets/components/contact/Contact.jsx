@@ -24,10 +24,10 @@ const Contact = () => {
     const [ submitStatus, setSubmitStatus] = useState("");
 
     const emailjsConfig = {
-       serviceId: 'TU_SERVICE_ID',      // Lo obtienes de EmailJS
-       templateId: 'TU_TEMPLATE_ID',    // Lo obtienes de EmailJS  
-       publicKey: 'TU_PUBLIC_KEY'       // Lo obtienes de EmailJS
-    } 
+       serviceId: import.meta.env.VITE_EMAILJS_SERVICE_ID,
+       templateId: import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+       publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+    }
 
     //Mensajes de error en ambos idiomas 
 
