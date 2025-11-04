@@ -39,7 +39,7 @@ const Contact = () => {
             invalidEmail: "Por favor ingresa un email valido",
             invalidPhone: "Por favor ingresa un numero de telefono valido",
             minLength: "El mensaje debe tener al menos 10 caracteres",
-            success: "Mensaje enviado con exito!",
+            success: "Gracias por tu mensaje! Muy pronto estaremos en contacto.",
             error: "Hubo un error al enviar el mensaje. Por favor intenta nuevamente."
         },
         english: { 
@@ -47,7 +47,7 @@ const Contact = () => {
             invalidEmail: "Please enter a valid email",
             invalidPhone: "Please enter a valid phone number",
             minLength: "The message must be at least 10 characters long",
-            success: "Message sent successfully!",
+            success: "Thank you for your message! I´ll contact you soon.",
             error: "There was an error sending the message. Please try again."
         }
     };  
@@ -124,8 +124,6 @@ const Contact = () => {
     const handleInputChange = (e) => {
         const { name, value } = e.target;
 
-         console.log('🔥 Input:', name, '=', value);
-
         setFormData(prev => ({
         ...prev,
         [name]: value
@@ -133,7 +131,6 @@ const Contact = () => {
 
         // Validar el campo
         const error = validateField(name, value);
-        console.log('🔥 Validation error for', name, ':', error);
     setErrors(prev => ({
         ...prev,
         [name]: error
@@ -151,8 +148,6 @@ const Contact = () => {
                 newErrors[field] = error;
             }
         });
-
-        console.log('🔥 All errors found:', newErrors);
         setErrors(newErrors);
         return Object.keys(newErrors).length === 0;
     }
@@ -162,12 +157,7 @@ const Contact = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        console.log('🔥 Form Data:', formData);
-    console.log('🔥 Validating...');
-
         if (!validateForm()) {
-             console.log('❌ Validation FAILED');
-        console.log('🔥 Errors:', errors);
             return;
         }
 
@@ -181,7 +171,6 @@ const Contact = () => {
                 e.target,
                 emailjsConfig.publicKey
             );
-            console.log('EmailJS result:', result);
             setSubmitStatus("success");
             
             //limpieza del formulario 
@@ -194,7 +183,6 @@ const Contact = () => {
             });
             setErrors({});
         } catch (error) {
-            console.error('EmailJS error:', error);
             setSubmitStatus("error");
         } finally {
             setIsSubmitting(false);

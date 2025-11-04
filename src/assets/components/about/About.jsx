@@ -3,7 +3,6 @@ import './About.css'
 const About = () => {
   return (
     <div className="conoceme" id="about-me">
-
     <div className="conoceme-content">
         <h2 className="conoceme-title" data-section="about-me" data-value="about-me-title">Traveller Coder</h2>
         <h3 className="conoceme-subtitle" data-section="about-me" data-value="about-me-subtitle">Desarrollador Frontend</h3>
@@ -18,5 +17,7 @@ const About = () => {
     </div>
   )
 }
+        
 
 export default About
+
