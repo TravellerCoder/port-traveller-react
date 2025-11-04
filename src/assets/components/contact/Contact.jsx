@@ -27,7 +27,8 @@ const Contact = () => {
     const [ errors, setErrors] = useState({});
     const [ isSubmitting, setIsSubmitting] = useState(false);
     const [ submitStatus, setSubmitStatus] = useState("");
-    const [ recaptchaValue, setRecaptchaValue ] = useState(null);
+    const [ recaptchaToken, setRecaptchaToken ] = useState(null);
+    const [ showRecaptcha, setShowRecaptcha ] = useState(false);
 
     //Configuracion de EmailJS desde variables de entorno
     const emailjsConfig = {
@@ -180,6 +181,18 @@ const Contact = () => {
             return;
         }
 
+        // Si no se ha mostrado el reCAPTCHA todavía, mostrarlo
+        if (!showRecaptcha) {
+            setShowRecaptcha(true);
+            return; // No enviar todavía, esperar el reCAPTCHA
+        }
+
+        // Si el reCAPTCHA ya se mostró pero no está completado
+        if (!recaptchaToken) {
+            setErrors(prev => ({ ...prev, recaptcha: errorMessages[currentLanguage].recaptcha }));
+            return;
+        }
+
         setIsSubmitting(true);
         setSubmitStatus("");
 
@@ -201,7 +214,8 @@ const Contact = () => {
                 message: ''
             });
             setErrors({});
-        } catch (error) {
+            setShowRecaptcha(false);
+            setRecaptchaToken(null);
             setSubmitStatus("error");
         } finally {
             setIsSubmitting(false);
@@ -294,6 +308,18 @@ const Contact = () => {
         >
          {errors.message && <div className="error" id="errorMensaje">{errors.message}</div>}
         </textarea>
+
+        { showRecaptcha &&  (
+        <div className="recaptcha-container">
+            <ReCAPTCHA
+                ref={recaptchaRef}
+                sitekey={recaptchaSiteKey}
+                onChange={handleRecaptchaChange}
+                theme="dark" 
+            />
+            {errors.recaptcha && <div className="error">{errors.recaptcha}</div>}
+        </div>
+        )}
 
         <button
         type="submit" 
