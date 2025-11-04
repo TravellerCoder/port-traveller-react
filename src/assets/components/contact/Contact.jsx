@@ -2,12 +2,15 @@ import './Contact.css'
 import { useState, useRef } from 'react';
 import { useLanguage } from '../../context/UseLanguageContext';
 import emailjs from '@emailjs/browser';
+import ReCAPTCHA from 'react-google-recaptcha';
 
 const Contact = () => {
 
-    const { currentLanguage } = useLanguage();
+    const { currentLanguage } = useLanguage(); // Contexto de idioma
 
     const formRef = useRef(); // Referencia al formulario
+
+    const recaptchaRef = useRef();  // Referencia al ReCAPTCHA
 
     //Estados para valores del formulario
 
@@ -24,12 +27,17 @@ const Contact = () => {
     const [ errors, setErrors] = useState({});
     const [ isSubmitting, setIsSubmitting] = useState(false);
     const [ submitStatus, setSubmitStatus] = useState("");
+    const [ recaptchaValue, setRecaptchaValue ] = useState(null);
 
+    //Configuracion de EmailJS desde variables de entorno
     const emailjsConfig = {
        serviceId: import.meta.env.VITE_EMAILJS_SERVICE_ID,
        templateId: import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
        publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY
     }
+
+    // Configuracion de ReCAPTCHA desde variables de entorno
+    const recaptchaSiteKey = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
 
     //Mensajes de error en ambos idiomas 
 
@@ -39,6 +47,7 @@ const Contact = () => {
             invalidEmail: "Por favor ingresa un email valido",
             invalidPhone: "Por favor ingresa un numero de telefono valido",
             minLength: "El mensaje debe tener al menos 10 caracteres",
+              recaptcha: "Por favor completa la verificación reCAPTCHA",
             success: "Gracias por tu mensaje! Muy pronto estaremos en contacto.",
             error: "Hubo un error al enviar el mensaje. Por favor intenta nuevamente."
         },
@@ -47,6 +56,7 @@ const Contact = () => {
             invalidEmail: "Please enter a valid email",
             invalidPhone: "Please enter a valid phone number",
             minLength: "The message must be at least 10 characters long",
+            recaptcha: "Please complete the reCAPTCHA verification",
             success: "Thank you for your message! I´ll contact you soon.",
             error: "There was an error sending the message. Please try again."
         }
@@ -151,6 +161,15 @@ const Contact = () => {
         setErrors(newErrors);
         return Object.keys(newErrors).length === 0;
     }
+
+    // Función para manejar el cambio del reCAPTCHA
+        const handleRecaptchaChange = (token) => {
+            setRecaptchaToken(token);
+            // Limpiar error de reCAPTCHA si existe
+            if (errors.recaptcha) {
+                setErrors(prev => ({ ...prev, recaptcha: '' }));
+            }
+        };
 
     //Manejar el envio del formulario
 
