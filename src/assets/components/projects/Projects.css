@@ -101,6 +101,20 @@
 
 /* ===== RESPONSIVE PROJECTS ===== */
 
+@media (max-width: 1024px) {
+  .proyectos-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+    height: auto;
+    max-height: none;
+  }
+
+  .proyectos {
+    padding: 5rem 3%;
+    min-height: auto;
+  }
+}
+
 @media (max-width: 768px) {
   .proyectos {
     padding: 5rem 4%;
